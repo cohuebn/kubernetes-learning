@@ -1,0 +1,42 @@
+apiVersion: k3d.io/v1alpha5
+kind: Simple
+metadata:
+  name: istio-ingress-example
+servers: 1
+agents: 3
+kubeAPI:
+  hostIP: "0.0.0.0"
+  hostPort: "6443"
+network: istio-ingress-example
+ports:
+  - port: 8080:80
+    nodeFilters:
+      - loadbalancer
+  - port: 0.0.0.0:8443:443
+    nodeFilters:
+      - loadbalancer
+registries:
+  create:
+    name: registry.localhost
+    host: "0.0.0.0"
+    hostPort: "5555"
+    proxy:
+      remoteURL: https://registry-1.docker.io
+options:
+  k3d:
+    wait: true
+  k3s:
+    extraArgs:
+      - arg: --tls-san=127.0.0.1
+        nodeFilters:
+          - server:*
+  runtime:
+    labels:
+      - label: core-k3d-object=true
+        nodeFilters:
+          - server:0
+          - loadbalancer
+env:
+  - envVar: test_env=this-is-a-test
+    nodeFilters:
+      - all

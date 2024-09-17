@@ -481,3 +481,5 @@ session-manager-plugin.pkg
 .terraform/
 
 *.sample-dataset.*
+
+.vscode/settings.json
