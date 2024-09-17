@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello
+  name: {{ .Values.helloApp.name }}
   labels:
-    app: hello
+    app: {{ .Values.helloApp.name }}
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: hello
+      app: {{ .Values.helloApp.name }}
   template:
     metadata:
       labels:
-        app: hello
+        app: {{ .Values.helloApp.name }}
         version: "1.0.0"
     spec:
       containers:
-        - name: hello
+        - name: {{ .Values.helloApp.name }}
           image: strm/helloworld-http
           ports:
             - containerPort: 80
@@ -31,12 +31,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello
+  name: {{ .Values.helloApp.name }}
   labels:
-    app: hello
+    app: {{ .Values.helloApp.name }}
 spec:
   selector:
-    app: hello
+    app: {{ .Values.helloApp.name }}
   ports:
     - protocol: TCP
       port: 80

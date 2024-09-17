@@ -1,0 +1,9 @@
+apiVersion: v2
+name: "cohuebn-examples-istio-ingress"
+version: 0.0.1
+description: "A simple example of using Istio for ingress access to a Kubernetes cluster"
+keywords:
+  - istio
+  - ingress
+sources:
+  - https://github.com/cohuebn/kubernetes-learning
