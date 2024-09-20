@@ -1,6 +1,7 @@
 appNamespace: "apps"
 helloApp:
   name: "hello"
+  replicas: 5
 istioGateway:
   name: "istio-gateway"
   namespace: "gateways"
