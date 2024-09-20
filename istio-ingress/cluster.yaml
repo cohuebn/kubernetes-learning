@@ -30,6 +30,9 @@ options:
       - arg: --tls-san=127.0.0.1
         nodeFilters:
           - server:*
+      - arg: --disable=traefik # Disable Traefik so we can use Istio
+        nodeFilters:
+          - server:*
   runtime:
     labels:
       - label: core-k3d-object=true

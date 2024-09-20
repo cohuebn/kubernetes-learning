@@ -1,3 +1,7 @@
 appNamespace: "apps"
 helloApp:
   name: "hello"
+istioGateway:
+  name: "istio-gateway"
+  namespace: "gateways"
+  virtualService: "hello"
